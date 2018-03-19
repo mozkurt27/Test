@@ -38,6 +38,12 @@
             </select>
 
 
+            <a href="#" onclick="testAjax()" data-role="button" data-theme="d">AJAX REQUEST</a>
+
+            <ul data-role="listview" id="list">
+                
+            </ul>
+
 
         </div>
 
@@ -48,3 +54,41 @@
 
 </body>
 </html>
+
+<script>
+
+    function testAjax()
+    {
+        console.log('fonksiyondayız. Ajax başlıyor...');
+        var x = $('#list');
+        $.ajax({
+            url: 'http://localhost:50890/',
+            method: 'get',
+            success: function (res) {
+                console.log('başarılı : ' + res.length);
+
+                for (i = 0; i < 5; i++) {
+                    x.append('<li><a href="#test">İçerik ' + i + '</a></li>');
+                }
+            },
+            error: function (err) {
+                console.log('başarısız : ' + err);
+
+                
+               // $('#list').append('<li>içerik 1</li><li>içerik 2</li><li>içerik 3</li><li>içerik 4</li>');
+
+                //$.each(arr, function (index, value) {
+                //    sum += value;
+                //});
+
+                for (i = 0; i < 5; i++) {
+                    x.append('<li>İçerik ' + i + '</li>');
+                }
+            }
+
+        });
+
+        console.log('Ajax bitti...');
+    };
+
+</script>
