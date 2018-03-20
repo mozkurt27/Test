@@ -67,7 +67,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-1.11.1.min.map" />
+    <Content Include="detail.html" />
+    <Content Include="Scripts\css\jquery.mobile-1.4.5.css" />
+    <Content Include="Scripts\css\jquery.mobile.datepicker.css" />
+    <Content Include="Scripts\css\jquery.mobile.datepicker.theme.css" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -76,13 +79,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\jquery.mobile-1.4.5.css" />
-    <Content Include="Scripts\jquery.mobile-1.4.5.js" />
     <Content Include="index.html" />
-    <Content Include="publicpage.html" />
-    <None Include="Scripts\jquery-1.11.1.intellisense.js" />
-    <Content Include="Scripts\jquery-1.11.1.js" />
-    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\js\datepicker.js" />
+    <Content Include="Scripts\js\jquery-1.11.1.js" />
+    <Content Include="Scripts\js\jquery.mobile-1.4.5.js" />
+    <Content Include="Scripts\js\jquery.mobile.datepicker.js" />
+    <Content Include="userpage.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

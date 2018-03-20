@@ -1,94 +1,92 @@
 ﻿<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>JQuery Mobile First Page</title>
+    <title>Application Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="Scripts/css/jquery.mobile-1.4.5.css" rel="stylesheet" />
+    <script src="Scripts/js/jquery-1.11.1.js"></script>
+    <script src="Scripts/js/jquery.mobile-1.4.5.js"></script>
 
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-
-    <!--<link href="Scripts/jquery.mobile-1.4.5.css" rel="stylesheet" />
-    <script src="Scripts/jquery-1.11.1.js"></script>
-    <script src="Scripts/jquery.mobile-1.4.5.js"></script>-->
 </head>
 <body>
-
-    <div data-role="page">
-        <div data-role="header">
-            <h1>Başlık</h1>
-        </div>
-
-        <div data-role="main">
-            <h2>İçerik</h2>
-
-            <ul data-role="listview" data-insert="true" data-filter="true">
-                <li><a href="publicpage.html" data-rel="dialog"> first link</a></li>
-                <li><a> second link</a></li>
-                <li><a> third link</a></li>
-            </ul>
-
-            <a href="publicpage.html" data-role="button" data-theme="b">Normal Buton</a>
-            <a href="publicpage.html" data-rel="dialog" data-role="button" data-theme="b">Dialog Button</a>
-
-            <select name="state" data-role="slider" data-theme="e" data-track-theme="b">
-                <option value="1">Open</option>
-                <option value="0">Close</option>
-            </select>
-
-
-            <a href="#" onclick="testAjax()" data-role="button" data-theme="d">AJAX REQUEST</a>
-
-            <ul data-role="listview" id="list">
-                
-            </ul>
-
-
-        </div>
-
-        <div data-role="footer" data-position="fixed">
-            <h5>Açıklama</h5>
-        </div>
-    </div>
+<div>
+    <form action="" style="width: 300px" id="login_form">
+        <label for="emp_id">Employee ID </label>
+        <input type="text" name="emp_id" id="emp_id" value="">
+            
+        <input id="btn_login" type="button" value="Login" data-icon="action" data-theme="a">
+    </form>
+</div>
+    
 
 </body>
 </html>
 
 <script>
-
-    function testAjax()
-    {
-        console.log('fonksiyondayız. Ajax başlıyor...');
-        var x = $('#list');
+    
+    $(document).ready(function(){
+    $('#btn_login').click(function(){
+        console.log('okey');
+        frm = $('#login_form');
+        console.log(location.href);
+        
         $.ajax({
-            url: 'http://localhost:50890/',
-            method: 'get',
-            success: function (res) {
-                console.log('başarılı : ' + res.length);
-
-                for (i = 0; i < 5; i++) {
-                    x.append('<li><a href="#test">İçerik ' + i + '</a></li>');
-                }
+            url : 'http://localhost',
+            type : 'get',
+            data : frm.serialize(),
+            datatype : 'json',
+            success : function(r){
+              console.log('true');  
+              console.log(location.href);
+              window.open('userpage.html?em=23',"_self");  
             },
-            error: function (err) {
-                console.log('başarısız : ' + err);
-
+            error : function(err){
+                console.log('false');  
+                console.log(location.href);
                 
-               // $('#list').append('<li>içerik 1</li><li>içerik 2</li><li>içerik 3</li><li>içerik 4</li>');
-
-                //$.each(arr, function (index, value) {
-                //    sum += value;
-                //});
-
-                for (i = 0; i < 5; i++) {
-                    x.append('<li>İçerik ' + i + '</li>');
-                }
+                //window.open('index.html',"_self");  
+                
+                window.open('userpage.html',"_self");
             }
-
         });
-
-        console.log('Ajax bitti...');
+        
+        
+    });
+});
+    function Send(){
+        console.log('okey');
+        frm = $('#login_form');
+        console.log(location.href);
+        
+        $.ajax({
+            url : 'http://localhost',
+            type : 'get',
+            data : frm.serialize(),
+            datatype : 'json',
+            success : function(r){
+              console.log('true');  
+              console.log(location.href);
+              window.open('userpage.html?em=23',"_self");  
+            },
+            error : function(err){
+                console.log('false');  
+                console.log(location.href);
+                
+                //window.open('index.html',"_self");  
+                
+                window.open('userpage.html',"_self");
+            }
+        });
+        
+        
     };
-
+    
 </script>

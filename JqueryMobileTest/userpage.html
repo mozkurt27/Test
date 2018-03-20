@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>User Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <link href="Scripts/css/jquery.mobile-1.4.5.css" rel="stylesheet" />
+    <link href="Scripts/css/jquery.mobile.datepicker.css" rel="stylesheet" />
+    <link href="Scripts/css/jquery.mobile.datepicker.theme.css" rel="stylesheet" />
+    <script src="Scripts/js/jquery-1.11.1.js"></script>
+    <script src="Scripts/js/jquery.mobile-1.4.5.js"></script>
+    <script src="Scripts/js/datepicker.js"></script>
+    <script src="Scripts/js/jquery.mobile.datepicker.js"></script>
+</head>
+<body>
+
+    <div data-role="page">
+        <div data-role="header" data-theme="c">
+            <h1>User Page</h1>
+        </div>
+        <div data-role="content">
+            <div style="width:8%">
+                <a data-role="button" href="javascript:exit()">EXIT</a>
+            </div>
+            
+            <div id="plist" >
+                <div style="margin-left: 10px">
+                    <ul data-role="listview" data-filter="true" data-filter-placeholder="Search permision" >
+                <!-- Bu kısmı javascript ile sayfa yüklenirken bas -->
+                        <li><a href="detail.html">Apple</a></li>
+                        <li><a href="#">Banana</a></li>
+                        <li><a href="#">Cherry</a></li>
+                    </ul>
+                </div>
+            </div>
+            <br><br><br>
+            <hr>
+            <br><br><br>
+            
+            <div id="pform">
+                <div style="margin-left: 10px">
+                    <form action="" method="post" data-role="form">
+                        <label for="start_date">Start Date </label>
+                        <input type="text" data-role="date" name="start_date">
+                            
+                        <label for="end_date">End Date </label>
+                        <input type="text" data-role="date" name="end_date">
+                            
+                        <label for="description">Description </label>
+                        <input type="text" data-role="input" name="description">
+                            
+                        <input type="submit" data-role="button" value="SEND">
+                            
+                    </form>        
+                </div>
+            </div>
+           
+           
+        </div>
+
+        <div data-role="footer" data-position="fixed">
+
+            <h1>Footer</h1>
+        </div>
+
+
+
+    </div>
+
+</body>
+</html>
+
+<script>
+    
+    function exit(){
+        
+        window.open('index.html','_self');
+    }
+</script>
