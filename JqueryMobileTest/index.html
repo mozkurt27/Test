@@ -34,11 +34,8 @@ and open the template in the editor.
     $(document).ready(function () {
         $('#btn_login').click(function () {
             var txt = $('#emp_id');
-            var frm = $('#login_form');
-            console.log('Result : ?' + txt.val() + '?');
 
             if (txt.val() === '') {
-                console.log('sıfırdan büyük :)');
                 alert('Kullanıcı adı boş geçilemez !!!');
             } else {
 
@@ -47,14 +44,8 @@ and open the template in the editor.
                     url: 'http://768405df.ngrok.io/HRRSMobile/rest/hr/checkManager/' + txt.val(),
                     type: 'GET',
                     success: function (result) {
-                        console.log('Başarı');
-                        console.log('sonuc: ');
-                        console.log(result);
-                        console.log('Name = ' + result.name + ' ' + result.id + ' ' + result.employeeFlag);
-
+                        alert('Sisteme giriliyor');
                         if (result.employeeFlag === 'True') {
-                            console.log('Çalışıyor');
-                            //JSON.stringify(result)
                             window.open('userpage.html?data=' + JSON.stringify(result), "_self");
                         }
                         else {
@@ -65,8 +56,6 @@ and open the template in the editor.
                         // window.open('userpage.html',"_self");
                     },
                     error: function (err) {
-                        console.log('false');
-                        console.log(err);
                         aler('Hata var');
 
                         //window.open('index.html',"_self");
