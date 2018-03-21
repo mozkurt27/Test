@@ -46,7 +46,7 @@ and open the template in the editor.
                     success: function (result) {
                         alert('Sisteme giriliyor');
                         if (result.employeeFlag === 'True') {
-                            window.open('userpage.html?data=' + JSON.stringify(result), "_self");
+                            window.open('userpage.html?data=' + JSON.stringify(result), '_self');
                         }
                         else {
                             alert('Sistemde böyle bir kullanıcı bulunamadı !!!');
@@ -56,7 +56,7 @@ and open the template in the editor.
                         // window.open('userpage.html',"_self");
                     },
                     error: function (err) {
-                        aler('Hata var');
+                        alert('Hata var' + err);
 
                         //window.open('index.html',"_self");
 
