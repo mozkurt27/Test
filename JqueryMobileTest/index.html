@@ -38,7 +38,7 @@ and open the template in the editor.
             if (txt.val() === '') {
                 alert('Kullanıcı adı boş geçilemez !!!');
             } else {
-
+                alert('Ajax başlıyor');
                 $.ajax({
 
                     url: 'http://768405df.ngrok.io/HRRSMobile/rest/hr/checkManager/' + txt.val(),
