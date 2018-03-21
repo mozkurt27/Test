@@ -9,31 +9,57 @@ and open the template in the editor.
     <title>Detail Page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="Scripts/css/jquery.mobile-1.4.5.css" rel="stylesheet" />
-    <link href="Scripts/css/jquery.mobile.datepicker.css" rel="stylesheet" />
-    <link href="Scripts/css/jquery.mobile.datepicker.theme.css" rel="stylesheet" />
     <script src="Scripts/js/jquery-1.11.1.js"></script>
     <script src="Scripts/js/jquery.mobile-1.4.5.js"></script>
-    <script src="Scripts/js/datepicker.js"></script>
-    <script src="Scripts/js/jquery.mobile.datepicker.js"></script>
-
 
 </head>
 <body>
-    
-<div data-role="header">
-    <h1>
-        Permission Detail
-    </h1>
-</div>
-<div data-role="content">
-    
-</div>
 
-<div data-role="footer" data-position="fixed" >
-    <h1>Footer</h1>
-</div>
-    
-    
+    <div data-role="header">
+        <h1>
+            Permission Detail
+        </h1>
+    </div>
+    <div data-role="content">
+
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <h1>Footer</h1>
+    </div>
+
+
 </body>
 </html>
+<script>
+    $(document).ready(function () {
+        console.log('Merhaba');
+        console.log(location.href);
+        var description = getParameterByName('description');
+        var empName = getParameterByName('empFirstName') + ' ' + getParameterByName('empLastName');
+        var empId = getParameterByName('empID');
+        var id = getParameterByName('id');
+        var startDate = getParameterByName('startDate');
+        var endDate = getParameterByName('endDate');
+        console.log(description);
+        console.log(empName);
+        console.log(empId);
+        console.log(id);
+        console.log(startDate);
+        console.log(endDate);
+
+        function getParameterByName(name) {
+            var url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+            results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+    });
+</script>

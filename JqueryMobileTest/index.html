@@ -9,84 +9,78 @@ and open the template in the editor.
     <title>Application Homepage</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link href="Scripts/css/jquery.mobile-1.4.5.css" rel="stylesheet" />
     <script src="Scripts/js/jquery-1.11.1.js"></script>
     <script src="Scripts/js/jquery.mobile-1.4.5.js"></script>
-
-
 </head>
 <body>
-<div>
-    <form action="" style="width: 300px" id="login_form">
-        <label for="emp_id">Employee ID </label>
-        <input type="text" name="emp_id" id="emp_id" value="">
-            
-        <input id="btn_login" type="button" value="Login" data-icon="action" data-theme="a">
-    </form>
-</div>
-    
+    <div>
+        <form action="" id="login_form" method="post">
+            <label for="emp_id">Employee ID </label>
+            <input type="number" name="emp_id" id="emp_id" value="">
+
+            <input id="btn_login" type="button" value="Login" data-icon="action" data-theme="a">
+        </form>
+    </div>
+
 
 </body>
 </html>
 
 <script>
-    
-    $(document).ready(function(){
-    $('#btn_login').click(function(){
-        console.log('okey');
-        frm = $('#login_form');
-        console.log(location.href);
-        
-        $.ajax({
-            url : 'http://localhost',
-            type : 'get',
-            data : frm.serialize(),
-            datatype : 'json',
-            success : function(r){
-              console.log('true');  
-              console.log(location.href);
-              window.open('userpage.html?em=23',"_self");  
-            },
-            error : function(err){
-                console.log('false');  
-                console.log(location.href);
-                
-                //window.open('index.html',"_self");  
-                
-                window.open('userpage.html',"_self");
+
+
+    $(document).ready(function () {
+        $('#btn_login').click(function () {
+            var txt = $('#emp_id');
+            var frm = $('#login_form');
+            console.log('Result : ?' + txt.val() + '?');
+
+            if (txt.val() === '') {
+                console.log('sıfırdan büyük :)');
+                alert('Kullanıcı adı boş geçilemez !!!');
+            } else {
+
+                $.ajax({
+
+                    url: 'http://768405df.ngrok.io/HRRSMobile/rest/hr/checkManager/' + txt.val(),
+                    type: 'GET',
+                    success: function (result) {
+                        console.log('Başarı');
+                        console.log('sonuc: ');
+                        console.log(result);
+                        console.log('Name = ' + result.name + ' ' + result.id + ' ' + result.employeeFlag);
+
+                        if (result.employeeFlag === 'True') {
+                            console.log('Çalışıyor');
+                            //JSON.stringify(result)
+                            window.open('userpage.html?data=' + JSON.stringify(result), "_self");
+                        }
+                        else {
+                            alert('Sistemde böyle bir kullanıcı bulunamadı !!!');
+                        }
+
+
+                        // window.open('userpage.html',"_self");
+                    },
+                    error: function (err) {
+                        console.log('false');
+                        console.log(err);
+
+                        //window.open('index.html',"_self");
+
+                        //window.open('userpage.html',"_self");
+                    }
+                });
             }
+
+
+
+
+
+
+
         });
-        
-        
     });
-});
-    function Send(){
-        console.log('okey');
-        frm = $('#login_form');
-        console.log(location.href);
-        
-        $.ajax({
-            url : 'http://localhost',
-            type : 'get',
-            data : frm.serialize(),
-            datatype : 'json',
-            success : function(r){
-              console.log('true');  
-              console.log(location.href);
-              window.open('userpage.html?em=23',"_self");  
-            },
-            error : function(err){
-                console.log('false');  
-                console.log(location.href);
-                
-                //window.open('index.html',"_self");  
-                
-                window.open('userpage.html',"_self");
-            }
-        });
-        
-        
-    };
-    
 </script>

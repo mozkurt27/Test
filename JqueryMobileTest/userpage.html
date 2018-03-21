@@ -4,14 +4,16 @@
     <title>User Page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
 
+    <link href="Scripts/css/bootstrap.css" rel="stylesheet" />
     <link href="Scripts/css/jquery.mobile-1.4.5.css" rel="stylesheet" />
     <link href="Scripts/css/jquery.mobile.datepicker.css" rel="stylesheet" />
     <link href="Scripts/css/jquery.mobile.datepicker.theme.css" rel="stylesheet" />
+
     <script src="Scripts/js/jquery-1.11.1.js"></script>
-    <script src="Scripts/js/jquery.mobile-1.4.5.js"></script>
+    <script src="Scripts/js/bootstrap.js"></script>
     <script src="Scripts/js/datepicker.js"></script>
+    <script src="Scripts/js/jquery.mobile-1.4.5.js"></script>
     <script src="Scripts/js/jquery.mobile.datepicker.js"></script>
 </head>
 <body>
@@ -21,43 +23,55 @@
             <h1>User Page</h1>
         </div>
         <div data-role="content">
-            <div style="width:8%">
+            <div>
                 <a data-role="button" href="javascript:exit()">EXIT</a>
             </div>
-            
-            <div id="plist" >
-                <div style="margin-left: 10px">
-                    <ul data-role="listview" data-filter="true" data-filter-placeholder="Search permision" >
-                <!-- Bu kısmı javascript ile sayfa yüklenirken bas -->
-                        <li><a href="detail.html">Apple</a></li>
-                        <li><a href="#">Banana</a></li>
-                        <li><a href="#">Cherry</a></li>
-                    </ul>
+
+            <div id="plist">
+                <div id="listvw" style="margin-left: 10px">
+
+                    <!-- Bu kısmı javascript ile sayfa yüklenirken bas -->
+                    <!--<li><a href="detail.html">Apple</a></li>
+                    <li><a href="#">Banana</a></li>
+                    <li><a href="#">Cherry</a></li>-->
+
+                    <table class="table" id="tbl">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Ad-Soyad</th>
+                                <th scope="col">Açıklama</th>
+                                <th scope="col">Başlangıç Tarihi</th>
+                                <th scope="col">Bitiş Tarihi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table_body"></tbody>
+                    </table>
+
                 </div>
             </div>
             <br><br><br>
             <hr>
             <br><br><br>
-            
+
             <div id="pform">
                 <div style="margin-left: 10px">
                     <form action="" method="post" data-role="form">
                         <label for="start_date">Start Date </label>
                         <input type="text" data-role="date" name="start_date">
-                            
+
                         <label for="end_date">End Date </label>
                         <input type="text" data-role="date" name="end_date">
-                            
+
                         <label for="description">Description </label>
                         <input type="text" data-role="input" name="description">
-                            
+
                         <input type="submit" data-role="button" value="SEND">
-                            
-                    </form>        
+
+                    </form>
                 </div>
             </div>
-           
-           
+
+
         </div>
 
         <div data-role="footer" data-position="fixed">
@@ -73,9 +87,69 @@
 </html>
 
 <script>
-    
-    function exit(){
-        
-        window.open('index.html','_self');
+    $(document).ready(function () {
+        console.log(location.href);
+        var str = getParameterByName('data');
+        var result = JSON.parse(str);
+        console.log(result.employeeFlag);
+
+        function getParameterByName(name) {
+            var url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+            results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        if (result.managerFlag == 'True') {
+            console.log('Manager');
+            console.log(result.pendingRequests.length);
+
+            var reqs = result.pendingRequests;
+
+            if (reqs.length > 0) {
+                console.log('büyük');
+
+                for (i = 0; i < reqs.length; i++) {
+                    console.log(reqs[i]);
+                    console.log($.param(reqs[i]));
+                    var tr = document.createElement('tr');
+                    var td = document.createElement('td');
+                    td.innerHTML = reqs[i].empFirstName + ' ' + reqs[i].empLastName;
+                    tr.appendChild(td);
+                    var td = document.createElement('td');
+                    td.innerHTML = reqs[i].description;
+                    tr.appendChild(td);
+                    var td = document.createElement('td');
+                    td.innerHTML = reqs[i].startDate;
+                    tr.appendChild(td);
+                    var td = document.createElement('td');
+                    td.innerHTML = reqs[i].endDate;
+                    tr.appendChild(td);
+                    var td = document.createElement('td');
+                    td.innerHTML = '<a href="detail.html?' + $.param(reqs[i]) + '" class="btn btn-info btn-lg">Cevap Ver</a>';
+                    tr.appendChild(td);
+                    document.getElementById('table_body').appendChild(tr);
+                }
+
+
+
+            }
+        } else {
+            // burda liste olan yer gizlenecek
+            document.getElementById("tbl").style.display = "none";
+        }
+
+
+
+
+    });
+
+    function exit() {
+
+        window.open('index.html', '_self');
     }
 </script>

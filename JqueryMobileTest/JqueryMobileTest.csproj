@@ -68,9 +68,16 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="detail.html" />
-    <Content Include="Scripts\css\jquery.mobile-1.4.5.css" />
-    <Content Include="Scripts\css\jquery.mobile.datepicker.css" />
-    <Content Include="Scripts\css\jquery.mobile.datepicker.theme.css" />
+    <Content Include="Scripts\css\bootstrap-grid.css.map" />
+    <Content Include="Scripts\css\bootstrap-grid.min.css.map" />
+    <Content Include="Scripts\css\bootstrap-reboot.css.map" />
+    <Content Include="Scripts\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Scripts\css\bootstrap.css.map" />
+    <Content Include="Scripts\css\bootstrap.min.css.map" />
+    <Content Include="Scripts\js\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\js\bootstrap.js.map" />
+    <Content Include="Scripts\js\bootstrap.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -80,6 +87,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
+    <Content Include="Scripts\css\bootstrap-grid.css" />
+    <Content Include="Scripts\css\bootstrap-grid.min.css" />
+    <Content Include="Scripts\css\bootstrap-reboot.css" />
+    <Content Include="Scripts\css\bootstrap-reboot.min.css" />
+    <Content Include="Scripts\css\bootstrap.css" />
+    <Content Include="Scripts\css\bootstrap.min.css" />
+    <Content Include="Scripts\css\jquery.mobile-1.4.5.css" />
+    <Content Include="Scripts\css\jquery.mobile.datepicker.css" />
+    <Content Include="Scripts\css\jquery.mobile.datepicker.theme.css" />
+    <Content Include="Scripts\js\bootstrap.bundle.js" />
+    <Content Include="Scripts\js\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\js\bootstrap.js" />
+    <Content Include="Scripts\js\bootstrap.min.js" />
     <Content Include="Scripts\js\datepicker.js" />
     <Content Include="Scripts\js\jquery-1.11.1.js" />
     <Content Include="Scripts\js\jquery.mobile-1.4.5.js" />
