@@ -45,7 +45,7 @@ and open the template in the editor.
                     url:  url,
                     type: 'GET',
                     crossDomain: true,
-                    cache: false,
+                    datatype:'jsonp',
                     success: function (result) {
                         alert('Sisteme giriliyor');
                         if (result.employeeFlag === 'True') {
