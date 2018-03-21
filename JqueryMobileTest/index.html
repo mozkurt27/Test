@@ -34,15 +34,17 @@ and open the template in the editor.
     $(document).ready(function () {
         $('#btn_login').click(function () {
             var txt = $('#emp_id');
-
+            var url = 'http://768405df.ngrok.io/HRRSMobile/rest/hr/checkManager/' + txt.val();
             if (txt.val() === '') {
                 alert('Kullanıcı adı boş geçilemez !!!');
             } else {
                 alert('Ajax başlıyor');
                 $.ajax({
 
-                    url: 'http://768405df.ngrok.io/HRRSMobile/rest/hr/checkManager/' + txt.val(),
+                    url:  url,
                     type: 'GET',
+                    crossDomain: true,
+                    cache: false,
                     success: function (result) {
                         alert('Sisteme giriliyor');
                         if (result.employeeFlag === 'True') {
@@ -55,8 +57,8 @@ and open the template in the editor.
 
                         // window.open('userpage.html',"_self");
                     },
-                    error: function (err) {
-                        alert('Hata var' + err);
+                    error: function (err, setting, exception) {
+                        alert('Hata var' + err + ' ' + exception);
 
                         //window.open('index.html',"_self");
 
