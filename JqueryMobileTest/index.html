@@ -38,6 +38,7 @@ and open the template in the editor.
             if (txt.val() === '') {
                 alert('Kullanıcı adı boş geçilemez !!!');
             } else {
+                alert('cıkıs :' + window.navigator.onLine + ' type: ' + navigator.connection.type);
                 alert('Ajax başlıyor');
                 $.ajax({
 
@@ -59,6 +60,7 @@ and open the template in the editor.
                     },
                     error: function (err, setting, exception) {
                         alert('Hata var' + err + ' ' + exception);
+                        
 
                         //window.open('index.html',"_self");
 
