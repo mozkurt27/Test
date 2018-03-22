@@ -34,12 +34,19 @@ and open the template in the editor.
     $(document).ready(function () {
         $('#btn_login').click(function () {
             var txt = $('#emp_id');
-            var url = 'http://768405df.ngrok.io/HRRSMobile/rest/hr/checkManager/' + txt.val();
+            var url = 'http://b57468a3.ngrok.io/HRRSMobile/rest/hr/checkManager/' + txt.val();
             if (txt.val() === '') {
                 alert('Kullanıcı adı boş geçilemez !!!');
             } else {
                 alert('cıkıs :' + window.navigator.onLine + ' type: ' + navigator.connection.type);
                 alert('Ajax başlıyor');
+
+                $.get(url, function (data) {
+                    alert('ilk ajax : ' + data.employeeFlag);
+                }).fail(function () {
+                    alert('error var :D');
+                    });
+
                 $.ajax({
 
                     url:  url,
