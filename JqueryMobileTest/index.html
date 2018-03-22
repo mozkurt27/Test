@@ -32,7 +32,9 @@ and open the template in the editor.
 
 
     $(document).ready(function () {
-        $('#btn_login').click(function () {
+        $('#btn_login').on('click tap vclick', function (e) {
+            e.preventDefault();
+
             var txt = $('#emp_id');
             var url = 'http://b57468a3.ngrok.io/HRRSMobile/rest/hr/checkManager/' + txt.val();
             if (txt.val() === '') {
@@ -45,14 +47,14 @@ and open the template in the editor.
                     alert('ilk ajax : ' + data.employeeFlag);
                 }).fail(function () {
                     alert('error var :D');
-                    });
+                });
 
                 $.ajax({
 
-                    url:  url,
+                    url: url,
                     type: 'GET',
                     crossDomain: true,
-                    datatype:'jsonp',
+                    datatype: 'jsonp',
                     success: function (result) {
                         alert('Sisteme giriliyor');
                         if (result.employeeFlag === 'True') {
@@ -67,7 +69,7 @@ and open the template in the editor.
                     },
                     error: function (err, setting, exception) {
                         alert('Hata var' + err + ' ' + exception);
-                        
+
 
                         //window.open('index.html',"_self");
 
@@ -81,12 +83,9 @@ and open the template in the editor.
                 });
             }
 
-
-
-
-
-
-
         });
+
+
+       // $('#btn_login').click(function () { });
     });
 </script>
